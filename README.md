@@ -1,4 +1,4 @@
-# Bouncy Balls Geam
+# Bouncy Balls Game
 
 ## Project Directive
 

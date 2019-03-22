@@ -7,8 +7,7 @@ Author: Valerie Baker
 
 Version (last update): 3/21/19
 
-Description: This programm shows many moving balls with random metallic colors moving
-moving from random locations at random speeds. These balls are created with rings of color 
+Description: This programm is a bouncuy balls game. These balls are created with rings of color 
 gradients thus creating a 3D effect. Each ball is an instance from the class Ball(). This
 class creates a ball at a random location and controls its movement in a defined random 
 direction. The ball is programmed to bounce of the walls of the screen. A ball can be 
@@ -31,7 +30,7 @@ function setup() {
   createCanvas(1200, 600);
   noStroke();
 
-
+  img = loadImage("assets/winner.jpg");
 
   // Create the ball objects of type Ball and add them to the array balls[]
   for (let i = 0; i < totalBalls; i++){
@@ -47,75 +46,82 @@ function draw() {
 	colorMode(RGB, 255);
 	background(245, 154, 194);
 
-  if (points == 10 )  { numberOfBalls = 3; }
-  if (points == 20 )  { numberOfBalls = 4; }
-  if (points == 30 )  { numberOfBalls = 5; }
-  if (points == 40 )  { numberOfBalls = 6; }
-  if (points == 50 )  { numberOfBalls = 7; }
-  if (points == 60 )  { numberOfBalls = 8; }
-  if (points == 70 )  { numberOfBalls = 9; }
-  if (points == 80 )  { numberOfBalls = 10; }
-   
+  if (points >= 50) {
+    image(img, 0, 0, width, height);
+    fill (255);
+    textSize(20);
+    text("Reload the page to PLAY AGAIN", 20, 100); 
+  } else {
 
-	// Display each ball; and make it move(travel) unless it is controlled by the mouse
-	for (let i = 0; i < numberOfBalls; i++){
-		balls[i].display();
-    if (!balls[i].stopped) { // the ball has not been stopped by a mouse-click
-    	balls[i].move(); // call the method move() from the class Ball()
-    } else {
-    	balls[i].x = mouseX; // setup the field x of the ball object to the location of mouseX
-    	balls[i].y = mouseY; // setup the field y of the ball object to the location of mouseY
-    }
-	}
+    if (points == 10 )  { numberOfBalls = 3; }
+    if (points == 20 )  { numberOfBalls = 4; }
+    if (points == 30 )  { numberOfBalls = 5; }
+    if (points == 40 )  { numberOfBalls = 6; }
+    if (points == 50 )  { numberOfBalls = 7; }
+    if (points == 60 )  { numberOfBalls = 8; }
+    if (points == 70 )  { numberOfBalls = 9; }
+    if (points == 80 )  { numberOfBalls = 10; }
+     
 
-  horPaddle.display(mouseX, horPaddle.y);
-  verPaddle.display(verPaddle.x, mouseY);
-
-  horPaddleLeft = horPaddle.x - horPaddle.width/2;
-  horPaddleRight = horPaddle.x + horPaddle.width/2;
-  horPaddleTop = horPaddle.y - horPaddle.height/2;
-  horPaddleBot = horPaddle.y + horPaddle.height/2;
-
-  verPaddleLeft = verPaddle.x - verPaddle.width/2;
-  verPaddleRight = verPaddle.x + verPaddle.width/2;
-  verPaddleTop = verPaddle.y - verPaddle.height/2;
-  verPaddleBot = verPaddle.y + verPaddle.height/2;
- 
-  for (let i = 0; i < numberOfBalls; i++){
-    ballTop = balls[i].y - balls[i].size/2;
-    ballBot = balls[i].y + balls[i].size/2;
-    ballLeft = balls[i].x - balls[i].size/2;
-    ballRight = balls[i].x + balls[i].size/2;
- 
-    if (!balls[i].stopped) { 
-
-      // Bounce back when the ball reaches the vertical paddle
-       if ((balls[i].x + balls[i].size/2) >= (verPaddle.x - verPaddle.width/2)) {   
-        if ((balls[i].y >= mouseY - verPaddle.height/2) && (balls[i].y <= mouseY + verPaddle.height/2 )) {
-         balls[i].xSpeed = balls[i].xSpeed * (-1); 
-          if (balls[i].xHit == 0) {           
-            points = points + 2; 
-            balls[i].xHit++;
-          }
-        }              
-      } 
-
-      if ((balls[i].y + balls[i].size/2) >= (horPaddle.y - horPaddle.height/2)) {   
-        if ((balls[i].x >= mouseX - horPaddle.width/2) && (balls[i].x <= mouseX + horPaddle.width/2 )) {
-           balls[i].ySpeed = balls[i].ySpeed * (-1); 
-          if (balls[i].yHit == 0) {           
-            points = points + 2; 
-            balls[i].yHit++;
-          }
-        } 
+  	// Display each ball; and make it move(travel) unless it is controlled by the mouse
+  	for (let i = 0; i < numberOfBalls; i++){
+  		balls[i].display();
+      if (!balls[i].stopped) { // the ball has not been stopped by a mouse-click
+      	balls[i].move(); // call the method move() from the class Ball()
+      } else {
+      	balls[i].x = mouseX; // setup the field x of the ball object to the location of mouseX
+      	balls[i].y = mouseY; // setup the field y of the ball object to the location of mouseY
       }
+  	}
 
-      if (balls[i].x < width/2) { balls[i].xHit = 0;} 
+    horPaddle.display(mouseX, horPaddle.y);
+    verPaddle.display(verPaddle.x, mouseY);
 
-      if (balls[i].y < height/2) { balls[i].yHit = 0;}   
-          
+    horPaddleLeft = horPaddle.x - horPaddle.width/2;
+    horPaddleRight = horPaddle.x + horPaddle.width/2;
+    horPaddleTop = horPaddle.y - horPaddle.height/2;
+    horPaddleBot = horPaddle.y + horPaddle.height/2;
+
+    verPaddleLeft = verPaddle.x - verPaddle.width/2;
+    verPaddleRight = verPaddle.x + verPaddle.width/2;
+    verPaddleTop = verPaddle.y - verPaddle.height/2;
+    verPaddleBot = verPaddle.y + verPaddle.height/2;
+   
+    for (let i = 0; i < numberOfBalls; i++){
+      ballTop = balls[i].y - balls[i].size/2;
+      ballBot = balls[i].y + balls[i].size/2;
+      ballLeft = balls[i].x - balls[i].size/2;
+      ballRight = balls[i].x + balls[i].size/2;
+   
+      if (!balls[i].stopped) { 
+
+        // Bounce back when the ball reaches the vertical paddle
+         if ((balls[i].x + balls[i].size/2) >= (verPaddle.x - verPaddle.width/2)) {   
+          if ((balls[i].y >= mouseY - verPaddle.height/2) && (balls[i].y <= mouseY + verPaddle.height/2 )) {
+           balls[i].xSpeed = balls[i].xSpeed * (-1); 
+            if (balls[i].xHit == 0) {           
+              points = points + 2; 
+              balls[i].xHit++;
+            }
+          }              
+        } 
+
+        if ((balls[i].y + balls[i].size/2) >= (horPaddle.y - horPaddle.height/2)) {   
+          if ((balls[i].x >= mouseX - horPaddle.width/2) && (balls[i].x <= mouseX + horPaddle.width/2 )) {
+             balls[i].ySpeed = balls[i].ySpeed * (-1); 
+            if (balls[i].yHit == 0) {           
+              points = points + 2; 
+              balls[i].yHit++;
+            }
+          } 
+        }
+
+        if (balls[i].x < width/2) { balls[i].xHit = 0;} 
+
+        if (balls[i].y < height/2) { balls[i].yHit = 0;}   
+            
+      }
     }
-  }
 
   fill(0, 102, 153);
   text("Points: " + points , 10, 60);
@@ -123,6 +129,7 @@ function draw() {
   text("Hit a ball to gain points - Miss a ball to lose points", width/ 3, 60);
   text("Click and drag a ball to reposition it.   Reload Page to Restart the Game.", width/4, 100);
 
+  }
 }
 // Function that defines what happens when the mouse has been pressed. 
 // It checks the location X and Y of the mouse. If it conincides with the location of a 

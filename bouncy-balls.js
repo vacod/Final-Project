@@ -94,7 +94,7 @@ function draw() {
         if ((balls[i].y >= mouseY - verPaddle.height/2) && (balls[i].y <= mouseY + verPaddle.height/2 )) {
          balls[i].xSpeed = balls[i].xSpeed * (-1); 
           if (balls[i].xHit == 0) {           
-            points++; 
+            points = points + 2; 
             balls[i].xHit++;
           }
         }              
@@ -104,7 +104,7 @@ function draw() {
         if ((balls[i].x >= mouseX - horPaddle.width/2) && (balls[i].x <= mouseX + horPaddle.width/2 )) {
            balls[i].ySpeed = balls[i].ySpeed * (-1); 
           if (balls[i].yHit == 0) {           
-            points++; 
+            points = points + 2; 
             balls[i].yHit++;
           }
         } 
@@ -120,7 +120,8 @@ function draw() {
   fill(0, 102, 153);
   text("Points: " + points , 10, 60);
   textSize(20);
-  text("Reload Page to Restart the Game.             Click and drag a ball to reposition it", width/4, 60);
+  text("Hit a ball to gain points - Miss a ball to lose points", width/ 3, 60);
+  text("Click and drag a ball to reposition it.   Reload Page to Restart the Game.", width/4, 100);
 
 }
 // Function that defines what happens when the mouse has been pressed. 
@@ -162,8 +163,8 @@ class Ball {
     this.blue = random(255);
 
     // Randomize the ball traveling speed
-    this.xSpeed = random(2, 5);
-    this.ySpeed = random(2, 5);
+    this.xSpeed = random(2, 10);
+    this.ySpeed = random(2, 10);
   
     // By default, the ball travels - unless it has been mouse clicked
     this.stopped = false;
@@ -190,12 +191,12 @@ class Ball {
 
     if (this.x + this.size/2 >= width){
       this.x = random(this.size/2, width/5 - this.size/2);
+      points--;
     }
 
     if (this.y + this.size/2 >= height){
-   
-    this.y = random(this.size/2, height/5 - this.size/2);
-    
+      this.y = random(this.size/2, height/5 - this.size/2);
+      points--;   
     }
 
   	this.x = this.x + this.xSpeed; // the x location increases by the xSpeed

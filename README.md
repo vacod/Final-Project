@@ -1,15 +1,12 @@
-# Bouncy Balls
+# Bouncy Balls Game
 
 ## Project Directive
 
-Create sketch that includes your own custom class. It utilizes an array of class 
-instances to build a moving system of objects that each have their own collision logic.
+Final Project of Coding for Artists II course
 
 ## Project Description
 
-This programm shows many moving balls with random metallic colors moving
-moving from random locations at random speeds. These balls are created with rings of color 
-gradients thus creating a 3D effect. Each ball is an instance from the class Ball(). This
+This programm is a bouncy balls game.  Each ball is an instance from the class Ball(). This
 class creates a ball at a random location and controls its movement in a defined random 
 direction. The ball is programmed to bounce of the walls of the screen. A ball can be 
 selected (left mouse click) and mouse dragged to another location of the screen.
@@ -18,7 +15,7 @@ selected (left mouse click) and mouse dragged to another location of the screen.
 
 ## Running the App
 
-Click on <https://bouncy-balls.herokuapp.com/> to run the app from the Heroku website
+Click on <https://bouncy-balls-game.herokuapp.com/> to run the app from the Heroku website
 
 ## Starting the program
 

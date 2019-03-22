@@ -5,7 +5,7 @@ that each have their own collision logic.
 
 Author: Valerie Baker
 
-Version (last update): 3/6/19
+Version (last update): 3/21/19
 
 Description: This programm shows many moving balls with random metallic colors moving
 moving from random locations at random speeds. These balls are created with rings of color 
@@ -15,8 +15,11 @@ direction. The ball is programmed to bounce of the walls of the screen. A ball c
 selected (left mouse click) and mouse dragged to another location of the screen.
 */
 
+let numberOfBalls = 2; // initial number of balls
+
 let balls = [];  // array of ball objects
-let numberOfBalls = 2; // size of the array of ball objects
+let totalBalls = 20; // max number of balls
+let addBall = true;
 
 let horPaddle;
 let verPaddle;
@@ -28,8 +31,10 @@ function setup() {
   createCanvas(1200, 600);
   noStroke();
 
+
+
   // Create the ball objects of type Ball and add them to the array balls[]
-  for (let i = 0; i < numberOfBalls; i++){
+  for (let i = 0; i < totalBalls; i++){
     balls[i] = new Ball();
   }
 
@@ -41,6 +46,16 @@ function setup() {
 function draw() {
 	colorMode(RGB, 255);
 	background(245, 154, 194);
+
+  if (points == 10 )  { numberOfBalls = 3; }
+  if (points == 20 )  { numberOfBalls = 4; }
+  if (points == 30 )  { numberOfBalls = 5; }
+  if (points == 40 )  { numberOfBalls = 6; }
+  if (points == 50 )  { numberOfBalls = 7; }
+  if (points == 60 )  { numberOfBalls = 8; }
+  if (points == 70 )  { numberOfBalls = 9; }
+  if (points == 80 )  { numberOfBalls = 10; }
+   
 
 	// Display each ball; and make it move(travel) unless it is controlled by the mouse
 	for (let i = 0; i < numberOfBalls; i++){
@@ -105,9 +120,9 @@ function draw() {
   fill(0, 102, 153);
   text("Points: " + points , 10, 60);
   textSize(20);
-  text("Click and drag a ball to reposition it", width/3, 60);
-}
+  text("Reload Page to Restart the Game.             Click and drag a ball to reposition it", width/4, 60);
 
+}
 // Function that defines what happens when the mouse has been pressed. 
 // It checks the location X and Y of the mouse. If it conincides with the location of a 
 // ball or balls it stops the ball/s, and creates a flag 'stopped' so the main draw() loop

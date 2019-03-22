@@ -1,0 +1,19 @@
+{
+  "name": "final-project",
+  "version": "1.0.0",
+  "description": "Bouncy Balls Game",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/vacod/Final-Project.git"
+  },
+  "author": "Valerie B.",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/vacod/Final-Project/issues"
+  },
+  "homepage": "https://github.com/vacod/Final-Project#readme"
+}

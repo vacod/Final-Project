@@ -163,8 +163,8 @@ class Ball {
     this.blue = random(255);
 
     // Randomize the ball traveling speed
-    this.xSpeed = random(2, 10);
-    this.ySpeed = random(2, 10);
+    this.xSpeed = random(2, 8);
+    this.ySpeed = random(2, 8);
   
     // By default, the ball travels - unless it has been mouse clicked
     this.stopped = false;
